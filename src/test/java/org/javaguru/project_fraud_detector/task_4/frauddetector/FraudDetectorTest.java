@@ -1,8 +1,5 @@
-package org.javaguru.project_fraud_detector.step_4.frauddetector;
+package org.javaguru.project_fraud_detector.task_4.frauddetector;
 
-import org.javaguru.project_fraud_detector.task_4.frauddetector.FraudDetector;
-import org.javaguru.project_fraud_detector.task_4.frauddetector.Trader;
-import org.javaguru.project_fraud_detector.task_4.frauddetector.Transaction;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
