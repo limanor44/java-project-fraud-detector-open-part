@@ -12,6 +12,10 @@ class FraudDetector {
             return true;
         }
 
+        if (trader.getCity().equalsIgnoreCase("Сидней")) {
+            return true;
+        }
+
         return false;
     }
 

@@ -37,4 +37,31 @@ class FraudDetectorTest {
         assertFalse(fraudDetector.isFraud(transaction));
     }
 
+    @Test
+    public void shouldBeFraudTransactionFromCityLowerCaseSidney() {
+        Trader trader = new Trader("Pokemon", "сидней");
+        Transaction transaction = new Transaction(trader, 1000);
+        assertTrue(fraudDetector.isFraud(transaction));
+    }
+
+    @Test
+    public void shouldBeFraudTransactionFromCityUpperCaseSidney() {
+        Trader trader = new Trader("Pokemon", "сидней".toUpperCase());
+        Transaction transaction = new Transaction(trader, 1000);
+        assertTrue(fraudDetector.isFraud(transaction));
+    }
+
+    @Test
+    public void shouldBeFraudTransactionFromCitySidney() {
+        Trader trader = new Trader("Pokemon", "Сидней");
+        Transaction transaction = new Transaction(trader, 1000);
+        assertTrue(fraudDetector.isFraud(transaction));
+    }
+
+    @Test
+    public void shouldBeFraudTransactionFromOtherCity() {
+        Trader trader = new Trader("Nick", "Rome");
+        Transaction transaction = new Transaction(trader, 1000);
+        assertFalse(fraudDetector.isFraud(transaction));
+    }
 }

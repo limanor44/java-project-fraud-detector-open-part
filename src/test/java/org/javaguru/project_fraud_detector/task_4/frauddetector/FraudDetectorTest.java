@@ -17,10 +17,30 @@ class FraudDetectorTest {
     }
 
     @Test
-    public void shouldNotBeFraudTransactionFromOtherTraderThenPokemon() {
+    public void shouldNotBeFraudTransactionFromOtherTraderThenPokemonAndAmountLessThenAllowed() {
         Trader trader = new Trader("Jon", "Rome");
         Transaction transaction = new Transaction(trader, 1000);
         assertFalse(fraudDetector.isFraud(transaction));
     }
 
+    @Test
+    public void shouldBeFraudTransactionFromOtherTraderThenPokemonButAmountMoreThenAllowed() {
+        Trader trader = new Trader("Jon", "Rome");
+        Transaction transaction = new Transaction(trader, 10000000);
+        assertTrue(fraudDetector.isFraud(transaction));
+    }
+
+    @Test
+    public void shouldNotBeFraudTransactionFromTraderThenPokemonAndAmountLessThenAllowed() {
+        Trader trader = new Trader("Pokemon", "Rome");
+        Transaction transaction = new Transaction(trader, 100);
+        assertTrue(fraudDetector.isFraud(transaction));
+    }
+
+    @Test
+    public void shouldBeFraudTransactionFromOtherTraderThenPokemonAndNegativeAmount() {
+        Trader trader = new Trader("Jon", "Rome");
+        Transaction transaction = new Transaction(trader, -1);
+        assertTrue(fraudDetector.isFraud(transaction));
+    }
 }

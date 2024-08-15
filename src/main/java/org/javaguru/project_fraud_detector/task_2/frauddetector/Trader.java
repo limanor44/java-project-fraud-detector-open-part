@@ -5,4 +5,11 @@ class Trader {
     private String fullName;
     private String city;
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getCity() {
+        return city;
+    }
 }
